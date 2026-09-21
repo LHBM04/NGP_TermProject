@@ -1,9 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Sources\Private\Precompiled.h" />
+    <Filter Include="Sources">
+      <UniqueIdentifier>{e6aa67ed-e75d-4ddd-886a-3adef9b5c482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Platform">
+      <UniqueIdentifier>{775a150b-b80c-4a23-b585-4d785fb4dca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Private\Precompiled.cpp" />
+    <ClCompile Include="Sources\Private\Precompiled.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Private\Platform\WindowInternal.cpp">
+      <Filter>Sources\Platform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Private\Precompiled.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Private\Platform\WindowInternal.h">
+      <Filter>Sources\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Platform\Window.h">
+      <Filter>Sources\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
