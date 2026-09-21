@@ -28,6 +28,9 @@ namespace TUK::Framework
 		[[nodiscard]] static Engine& GetInstance();
 
 		template <class TSubsystem>
+		void AddSubsystem();
+
+		template <class TSubsystem>
 		[[nodiscard]] TSubsystem* GetSubsystem();
 
 		template <class TSubsystem>
@@ -39,6 +42,15 @@ namespace TUK::Framework
 		std::unordered_map<std::type_index, std::unique_ptr<Subsystem>> subsystems;
 		std::vector<Subsystem*> subsystemsByType;
 	};
+
+	template <class TSubsystem>
+	void Engine::AddSubsystem()
+	{
+		static_assert(std::is_base_of_v<Subsystem, TSubsystem>, "TSubsystem must be derived from Subsystem");
+		auto subsystem = std::make_unique<TSubsystem>();
+		subsystemsByType.push_back(subsystem.get());
+		subsystems[typeid(TSubsystem)] = std::move(subsystem);
+	}
 
 	template <class TSubsystem>
 	TSubsystem* Engine::GetSubsystem()

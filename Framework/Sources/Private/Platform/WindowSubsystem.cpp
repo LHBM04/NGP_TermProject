@@ -4,6 +4,7 @@
 #include "Framework/Platform/Window.h"
 #include "Framework/Platform/WindowFlags.h"
 #include "Framework/Platform/WindowOptions.h"
+
 #include "Platform/WindowInternal.h"
 
 namespace TUK::Framework
@@ -80,6 +81,6 @@ namespace TUK::Framework
 		}
 		ShowWindow(hWnd, SW_SHOW);
 		UpdateWindow(hWnd);
-		return new WindowInternal(hWnd);
+		return windows.emplace_back(std::make_unique<WindowInternal>(hWnd)).get();
 	}
 }

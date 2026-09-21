@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <memory>
+
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
@@ -7,8 +10,8 @@
 
 namespace TUK::Framework
 {
+	struct WindowOptions;
 	class Window;
-	class WindowOptions;
 
 	class WindowSubsystem : public Subsystem
 	{
@@ -20,5 +23,6 @@ namespace TUK::Framework
 
 	private:
 		WNDCLASSEXW wcexw;
+		std::vector<std::unique_ptr<Window>> windows;
 	};
 }
