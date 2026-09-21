@@ -7,6 +7,9 @@
     <Filter Include="Sources\Platform">
       <UniqueIdentifier>{775a150b-b80c-4a23-b585-4d785fb4dca0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Core">
+      <UniqueIdentifier>{35068eb3-b91f-4527-814b-c3c338df985d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Private\Precompiled.cpp">
@@ -14,6 +17,9 @@
     </ClCompile>
     <ClCompile Include="Sources\Private\Platform\WindowInternal.cpp">
       <Filter>Sources\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Public\Framework\Core\Engine.cpp">
+      <Filter>Sources\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +31,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Public\Framework\Platform\Window.h">
       <Filter>Sources\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Core\Engine.h">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Core\Subsystem.h">
+      <Filter>Sources\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
