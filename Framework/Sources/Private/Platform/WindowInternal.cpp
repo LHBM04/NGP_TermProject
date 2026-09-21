@@ -85,4 +85,9 @@ namespace TUK::Framework
 		GetWindowRect(hWnd, &rect);
 		SetWindowPos(hWnd, nullptr, rect.left, positionY, rect.right - rect.left, rect.bottom - rect.top, SWP_NOZORDER | SWP_NOSIZE);
 	}
+
+	HWND WindowInternal::GetHWND() const noexcept
+	{
+		return hWnd;
+	}
 }

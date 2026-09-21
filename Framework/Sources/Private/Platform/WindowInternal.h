@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+#include <string_view>
+
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
@@ -33,6 +36,8 @@ namespace TUK::Framework
 
 		[[nodiscard]] int GetPositionY() const noexcept override;
 		void SetPositionY(int positionY) noexcept override;
+
+		[[nodiscard]] HWND GetHWND() const noexcept;
 
 	private:
 		HWND hWnd;
