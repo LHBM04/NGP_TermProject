@@ -171,9 +171,13 @@
     <ClInclude Include="Sources\Public\Framework\Core\Engine.h" />
     <ClInclude Include="Sources\Public\Framework\Core\Subsystem.h" />
     <ClInclude Include="Sources\Public\Framework\Platform\Window.h" />
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowFlags.h" />
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowOptions.h" />
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowSubsystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Private\Platform\WindowInternal.cpp" />
+    <ClCompile Include="Sources\Private\Platform\WindowSubsystem.cpp" />
     <ClCompile Include="Sources\Private\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

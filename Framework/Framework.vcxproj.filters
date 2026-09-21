@@ -21,6 +21,9 @@
     <ClCompile Include="Sources\Public\Framework\Core\Engine.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Private\Platform\WindowSubsystem.cpp">
+      <Filter>Sources\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Private\Precompiled.h">
@@ -37,6 +40,15 @@
     </ClInclude>
     <ClInclude Include="Sources\Public\Framework\Core\Subsystem.h">
       <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowSubsystem.h">
+      <Filter>Sources\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowFlags.h">
+      <Filter>Sources\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Public\Framework\Platform\WindowOptions.h">
+      <Filter>Sources\Platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
