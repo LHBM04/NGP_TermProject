@@ -10,14 +10,17 @@
     <Filter Include="Public\Framework">
       <UniqueIdentifier>{2b366da3-dc0e-4a16-9730-6ca51c4478de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Public\Framework\Core">
-      <UniqueIdentifier>{48acd3a8-784b-406f-933f-f1c2a3b874fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Public\Framework\Math">
       <UniqueIdentifier>{62a93b29-3e2c-4e48-84e2-ad9c5be5ff32}</UniqueIdentifier>
     </Filter>
     <Filter Include="Private\Math">
       <UniqueIdentifier>{1a92b244-c3c1-4caa-9edb-a466f8c3e08e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Framework\Core">
+      <UniqueIdentifier>{f1f8bf22-954e-43fc-b419-3cac47d9157d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Core">
+      <UniqueIdentifier>{57229d6c-011a-420c-af25-be4df66b96a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +54,27 @@
     <ClInclude Include="Public\Framework\Math.hpp">
       <Filter>Public\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Public\Framework\Core.hpp">
+      <Filter>Public\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\System.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\Engine.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\EngineSubsystem.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\Game.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\GameSubsystem.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Core\Subsystem.hpp">
+      <Filter>Public\Framework\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Precompiled.cpp">
@@ -76,6 +100,24 @@
     </ClCompile>
     <ClCompile Include="Private\Math\Vector4D.cpp">
       <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\Engine.cpp">
+      <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\EngineSubsystem.cpp">
+      <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\Game.cpp">
+      <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\GameSubsystem.cpp">
+      <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\Subsystem.cpp">
+      <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\System.cpp">
+      <Filter>Private\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

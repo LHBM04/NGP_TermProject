@@ -164,6 +164,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp" />
+    <ClInclude Include="Public\Framework\Core.hpp" />
+    <ClInclude Include="Public\Framework\Core\Engine.hpp" />
+    <ClInclude Include="Public\Framework\Core\EngineSubsystem.hpp" />
+    <ClInclude Include="Public\Framework\Core\Game.hpp" />
+    <ClInclude Include="Public\Framework\Core\GameSubsystem.hpp" />
+    <ClInclude Include="Public\Framework\Core\Subsystem.hpp" />
+    <ClInclude Include="Public\Framework\Core\System.hpp" />
     <ClInclude Include="Public\Framework\Math.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGB.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGBA.hpp" />
@@ -175,6 +182,12 @@
     <ClInclude Include="Public\Framework\Math\Vector4D.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Private\Core\Engine.cpp" />
+    <ClCompile Include="Private\Core\EngineSubsystem.cpp" />
+    <ClCompile Include="Private\Core\Game.cpp" />
+    <ClCompile Include="Private\Core\GameSubsystem.cpp" />
+    <ClCompile Include="Private\Core\Subsystem.cpp" />
+    <ClCompile Include="Private\Core\System.cpp" />
     <ClCompile Include="Private\Math\ColorRGB.cpp" />
     <ClCompile Include="Private\Math\ColorRGBA.cpp" />
     <ClCompile Include="Private\Math\Matrix4x4.cpp" />
