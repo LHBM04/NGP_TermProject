@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Private\Platform\WindowInternal.hpp" />
     <ClInclude Include="Private\Precompiled.hpp" />
     <ClInclude Include="Public\Framework\Core.hpp" />
     <ClInclude Include="Public\Framework\Core\Engine.hpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Private\Platform\EventSubsystem.cpp" />
     <ClCompile Include="Private\Platform\TimeSubsystem.cpp" />
     <ClCompile Include="Private\Platform\Window.cpp" />
+    <ClCompile Include="Private\Platform\WindowInternal.cpp" />
     <ClCompile Include="Private\Platform\WindowOptions.cpp" />
     <ClCompile Include="Private\Platform\WindowSubsystem.cpp" />
     <ClCompile Include="Private\Precompiled.cpp">

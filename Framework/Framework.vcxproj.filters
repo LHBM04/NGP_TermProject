@@ -99,6 +99,9 @@
     <ClInclude Include="Public\Framework\Platform.hpp">
       <Filter>Public\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Private\Platform\WindowInternal.hpp">
+      <Filter>Private\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Precompiled.cpp">
@@ -156,6 +159,9 @@
       <Filter>Private\Platform</Filter>
     </ClCompile>
     <ClCompile Include="Private\Platform\WindowSubsystem.cpp">
+      <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\WindowInternal.cpp">
       <Filter>Private\Platform</Filter>
     </ClCompile>
   </ItemGroup>
