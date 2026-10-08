@@ -163,6 +163,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Private\Graphics\RenderDeviceInternal.hpp" />
+    <ClInclude Include="Private\Graphics\RenderTargetInternal.hpp" />
+    <ClInclude Include="Private\Graphics\SwapChainInternal.hpp" />
     <ClInclude Include="Private\Platform\WindowInternal.hpp" />
     <ClInclude Include="Private\Precompiled.hpp" />
     <ClInclude Include="Public\Framework\Core.hpp" />
@@ -174,7 +177,10 @@
     <ClInclude Include="Public\Framework\Core\System.hpp" />
     <ClInclude Include="Public\Framework\Graphics.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderContext.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\RenderDevice.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\RenderTarget.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\SwapChain.hpp" />
     <ClInclude Include="Public\Framework\Math.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGB.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGBA.hpp" />
@@ -198,6 +204,10 @@
     <ClCompile Include="Private\Core\GameSubsystem.cpp" />
     <ClCompile Include="Private\Core\Subsystem.cpp" />
     <ClCompile Include="Private\Core\System.cpp" />
+    <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp" />
+    <ClCompile Include="Private\Graphics\RenderSubsystem.cpp" />
+    <ClCompile Include="Private\Graphics\RenderTargetInternal.cpp" />
+    <ClCompile Include="Private\Graphics\SwapChainInternal.cpp" />
     <ClCompile Include="Private\Math\ColorRGB.cpp" />
     <ClCompile Include="Private\Math\ColorRGBA.cpp" />
     <ClCompile Include="Private\Math\Matrix4x4.cpp" />

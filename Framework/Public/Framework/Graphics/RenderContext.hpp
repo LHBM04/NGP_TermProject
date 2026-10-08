@@ -7,5 +7,11 @@ namespace TUK::Framework
 	public:
 		RenderContext() noexcept;
 		~RenderContext() noexcept;
+
+		RenderContext(const RenderContext&) noexcept;
+		RenderContext& operator=(const RenderContext&) noexcept;
+
+		RenderContext(RenderContext&&) noexcept;
+		RenderContext& operator=(RenderContext&&) noexcept;
 	};
 }

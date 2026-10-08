@@ -31,6 +31,9 @@
     <Filter Include="Public\Framework\Graphics">
       <UniqueIdentifier>{789ccf37-888f-4ab3-88a8-5646c9e7de5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Private\Graphics">
+      <UniqueIdentifier>{0a7917c6-4216-41a5-9803-f02228303139}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp">
@@ -114,6 +117,24 @@
     <ClInclude Include="Public\Framework\Graphics.hpp">
       <Filter>Public\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\SwapChain.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\RenderTarget.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\RenderTargetInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\RenderDevice.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\RenderDeviceInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\SwapChainInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Precompiled.cpp">
@@ -175,6 +196,18 @@
     </ClCompile>
     <ClCompile Include="Private\Platform\WindowInternal.cpp">
       <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\RenderSubsystem.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\RenderTargetInternal.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\SwapChainInternal.cpp">
+      <Filter>Private\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
