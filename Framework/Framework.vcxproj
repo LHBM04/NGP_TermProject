@@ -180,6 +180,12 @@
     <ClInclude Include="Public\Framework\Math\Vector2D.hpp" />
     <ClInclude Include="Public\Framework\Math\Vector3D.hpp" />
     <ClInclude Include="Public\Framework\Math\Vector4D.hpp" />
+    <ClInclude Include="Public\Framework\Platform.hpp" />
+    <ClInclude Include="Public\Framework\Platform\EventSubsystem.hpp" />
+    <ClInclude Include="Public\Framework\Platform\TimeSubsystem.hpp" />
+    <ClInclude Include="Public\Framework\Platform\Window.hpp" />
+    <ClInclude Include="Public\Framework\Platform\WindowOptions.hpp" />
+    <ClInclude Include="Public\Framework\Platform\WindowSubsystem.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Core\Engine.cpp" />
@@ -195,6 +201,11 @@
     <ClCompile Include="Private\Math\Vector2D.cpp" />
     <ClCompile Include="Private\Math\Vector3D.cpp" />
     <ClCompile Include="Private\Math\Vector4D.cpp" />
+    <ClCompile Include="Private\Platform\EventSubsystem.cpp" />
+    <ClCompile Include="Private\Platform\TimeSubsystem.cpp" />
+    <ClCompile Include="Private\Platform\Window.cpp" />
+    <ClCompile Include="Private\Platform\WindowOptions.cpp" />
+    <ClCompile Include="Private\Platform\WindowSubsystem.cpp" />
     <ClCompile Include="Private\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

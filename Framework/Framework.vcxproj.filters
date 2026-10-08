@@ -22,6 +22,12 @@
     <Filter Include="Private\Core">
       <UniqueIdentifier>{57229d6c-011a-420c-af25-be4df66b96a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Private\Platform">
+      <UniqueIdentifier>{a4abcfb8-5c95-490e-9741-9f88fbb81563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Framework\Platform">
+      <UniqueIdentifier>{8c91d25c-3c72-4720-91e4-5f88abc331fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp">
@@ -75,6 +81,24 @@
     <ClInclude Include="Public\Framework\Core\Subsystem.hpp">
       <Filter>Public\Framework\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Public\Framework\Platform\EventSubsystem.hpp">
+      <Filter>Public\Framework\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Platform\TimeSubsystem.hpp">
+      <Filter>Public\Framework\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Platform\Window.hpp">
+      <Filter>Public\Framework\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Platform\WindowOptions.hpp">
+      <Filter>Public\Framework\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Platform\WindowSubsystem.hpp">
+      <Filter>Public\Framework\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Platform.hpp">
+      <Filter>Public\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Precompiled.cpp">
@@ -118,6 +142,21 @@
     </ClCompile>
     <ClCompile Include="Private\Core\System.cpp">
       <Filter>Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\EventSubsystem.cpp">
+      <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\TimeSubsystem.cpp">
+      <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\Window.cpp">
+      <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\WindowOptions.cpp">
+      <Filter>Private\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Platform\WindowSubsystem.cpp">
+      <Filter>Private\Platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
