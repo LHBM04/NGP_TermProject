@@ -28,6 +28,9 @@
     <Filter Include="Public\Framework\Platform">
       <UniqueIdentifier>{8c91d25c-3c72-4720-91e4-5f88abc331fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public\Framework\Graphics">
+      <UniqueIdentifier>{789ccf37-888f-4ab3-88a8-5646c9e7de5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp">
@@ -101,6 +104,15 @@
     </ClInclude>
     <ClInclude Include="Private\Platform\WindowInternal.hpp">
       <Filter>Private\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\RenderContext.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics.hpp">
+      <Filter>Public\Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

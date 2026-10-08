@@ -47,11 +47,9 @@
 #include <windows.h>
 #include <windowsx.h>
 
+#include "Framework/Core.hpp"
+#include "Framework/Graphics.hpp"
 #include "Framework/Math.hpp"
-
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dcompiler.lib")
-
-#pragma comment(lib, "dxgi.lib")
+#include "Framework/Platform.hpp"
 
 #pragma comment(lib, "framework.lib")

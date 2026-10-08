@@ -172,6 +172,9 @@
     <ClInclude Include="Public\Framework\Core\GameSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\Subsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\System.hpp" />
+    <ClInclude Include="Public\Framework\Graphics.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\RenderContext.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Math.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGB.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGBA.hpp" />
