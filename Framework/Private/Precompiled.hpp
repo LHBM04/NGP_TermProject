@@ -17,6 +17,7 @@
 #include <format>
 #include <fstream>
 #include <functional>
+#include <iostream>
 #include <iterator>
 #include <limits>
 #include <memory>

@@ -96,6 +96,7 @@
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Precompiled.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)Private;$(ProjectDir)Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -115,6 +116,7 @@
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Precompiled.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)Private;$(ProjectDir)Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -132,6 +134,7 @@
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Precompiled.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)Private;$(ProjectDir)Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -151,6 +154,7 @@
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Precompiled.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)Private;$(ProjectDir)Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -160,8 +164,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp" />
+    <ClInclude Include="Public\Framework\Math.hpp" />
+    <ClInclude Include="Public\Framework\Math\ColorRGB.hpp" />
+    <ClInclude Include="Public\Framework\Math\ColorRGBA.hpp" />
+    <ClInclude Include="Public\Framework\Math\Mathf.hpp" />
+    <ClInclude Include="Public\Framework\Math\Matrix4x4.hpp" />
+    <ClInclude Include="Public\Framework\Math\Quaternion.hpp" />
+    <ClInclude Include="Public\Framework\Math\Vector2D.hpp" />
+    <ClInclude Include="Public\Framework\Math\Vector3D.hpp" />
+    <ClInclude Include="Public\Framework\Math\Vector4D.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Private\Math\ColorRGB.cpp" />
+    <ClCompile Include="Private\Math\ColorRGBA.cpp" />
+    <ClCompile Include="Private\Math\Matrix4x4.cpp" />
+    <ClCompile Include="Private\Math\Quaternion.cpp" />
+    <ClCompile Include="Private\Math\Vector2D.cpp" />
+    <ClCompile Include="Private\Math\Vector3D.cpp" />
+    <ClCompile Include="Private\Math\Vector4D.cpp" />
     <ClCompile Include="Private\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
