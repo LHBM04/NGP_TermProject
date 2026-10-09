@@ -16,9 +16,8 @@ using namespace TUK::Framework;
 		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
 		AllocConsole();
-		FILE* consoleStream = nullptr;
-		freopen_s(&consoleStream, "CONOUT$", "w", stdout);
-		freopen_s(&consoleStream, "CONOUT$", "w", stderr);
+		freopen("CONOUT$", "w", stdout);
+		freopen("CONOUT$", "w", stderr);
 	#endif
 	
 		std::unique_ptr<Engine> engine = std::unique_ptr<Engine>(CreateEngineInstance());
