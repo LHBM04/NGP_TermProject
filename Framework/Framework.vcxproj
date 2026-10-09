@@ -179,6 +179,9 @@
     <ClInclude Include="Public\Framework\Core\GameSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\Subsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\System.hpp" />
+    <ClInclude Include="Public\Framework\Entities.hpp" />
+    <ClInclude Include="Public\Framework\Entities\Scene.hpp" />
+    <ClInclude Include="Public\Framework\Entities\SceneSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Graphics.hpp" />
     <ClInclude Include="Public\Framework\Graphics\Buffer.hpp" />
     <ClInclude Include="Public\Framework\Graphics\CommandBuffer.hpp" />
@@ -213,10 +216,12 @@
   <ItemGroup>
     <ClCompile Include="Private\Core\Engine.cpp" />
     <ClCompile Include="Private\Core\EngineSubsystem.cpp" />
+    <ClCompile Include="Private\Core\Entry.cpp" />
     <ClCompile Include="Private\Core\Game.cpp" />
     <ClCompile Include="Private\Core\GameSubsystem.cpp" />
     <ClCompile Include="Private\Core\Subsystem.cpp" />
     <ClCompile Include="Private\Core\System.cpp" />
+    <ClCompile Include="Private\Entities\SceneSubsystem.cpp" />
     <ClCompile Include="Private\Graphics\BufferInternal.cpp" />
     <ClCompile Include="Private\Graphics\CommandBufferInternal.cpp" />
     <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp" />

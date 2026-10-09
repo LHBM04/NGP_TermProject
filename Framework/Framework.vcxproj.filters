@@ -34,6 +34,12 @@
     <Filter Include="Private\Graphics">
       <UniqueIdentifier>{0a7917c6-4216-41a5-9803-f02228303139}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Private\Entities">
+      <UniqueIdentifier>{165664d3-e2ad-4c68-af53-969433e3a5f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Framework\Entities">
+      <UniqueIdentifier>{24dc67b0-d880-4bbe-a65d-2750c64fa10e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Private\Precompiled.hpp">
@@ -174,6 +180,15 @@
     <ClInclude Include="Private\Graphics\TextureInternal.hpp">
       <Filter>Private\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Public\Framework\Entities\Scene.hpp">
+      <Filter>Public\Framework\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Entities\SceneSubsystem.hpp">
+      <Filter>Public\Framework\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Entities.hpp">
+      <Filter>Public\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Precompiled.cpp">
@@ -253,6 +268,12 @@
     </ClCompile>
     <ClCompile Include="Private\Graphics\TextureInternal.cpp">
       <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Entities\SceneSubsystem.cpp">
+      <Filter>Private\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Core\Entry.cpp">
+      <Filter>Private\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
