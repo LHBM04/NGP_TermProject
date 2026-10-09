@@ -5,12 +5,6 @@
 
 using namespace TUK::Framework;
 
-namespace TUK::Framework
-{
-	extern Engine* CreateEngineInstance();
-	extern Game* CreateGameInstance();
-}
-
 #ifdef _WIN32
 	extern "C" INT APIENTRY wWinMain(
 		_In_ HINSTANCE hInstance,
