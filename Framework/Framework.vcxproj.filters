@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Public">
@@ -111,7 +111,7 @@
     <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp">
       <Filter>Public\Framework\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Public\Framework\Graphics\RenderContext.hpp">
+    <ClInclude Include="Public\Framework\Graphics\CommandBuffer.hpp">
       <Filter>Public\Framework\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Public\Framework\Graphics.hpp">
@@ -133,6 +133,45 @@
       <Filter>Private\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Private\Graphics\SwapChainInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\CommandBufferInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\TextureFormat.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\Viewport.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\Buffer.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\ScissorRect.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\ResourceState.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\Texture.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\DepthStencil.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\Sampler.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Graphics\Shader.hpp">
+      <Filter>Public\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\ShaderInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\BufferInternal.hpp">
+      <Filter>Private\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Private\Graphics\TextureInternal.hpp">
       <Filter>Private\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -185,9 +224,6 @@
     <ClCompile Include="Private\Platform\TimeSubsystem.cpp">
       <Filter>Private\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="Private\Platform\Window.cpp">
-      <Filter>Private\Platform</Filter>
-    </ClCompile>
     <ClCompile Include="Private\Platform\WindowOptions.cpp">
       <Filter>Private\Platform</Filter>
     </ClCompile>
@@ -207,6 +243,15 @@
       <Filter>Private\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Private\Graphics\SwapChainInternal.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\CommandBufferInternal.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\BufferInternal.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Private\Graphics\TextureInternal.cpp">
       <Filter>Private\Graphics</Filter>
     </ClCompile>
   </ItemGroup>

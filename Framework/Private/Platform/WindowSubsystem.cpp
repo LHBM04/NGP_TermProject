@@ -4,6 +4,8 @@
 #include "Framework/Core/Engine.hpp"
 
 #include "Framework/Platform/EventSubsystem.hpp"
+#include "Framework/Graphics/RenderSubsystem.hpp"
+#include "Platform/WindowInternal.hpp"
 
 namespace
 {
@@ -71,7 +73,7 @@ namespace TUK::Framework
 			}
 		}
 
-		std::unique_ptr<Window> window = std::make_unique<Window>(resolvedOptions);
+		auto window = std::make_unique<WindowInternal>();
 		const HWND hWnd = CreateWindowExW(0, ClassName, resolvedOptions.title.c_str(), style,
 			resolvedOptions.position.GetX(), resolvedOptions.position.GetY(),
 			resolvedOptions.size.GetX(), resolvedOptions.size.GetY(),
@@ -81,7 +83,7 @@ namespace TUK::Framework
 			return std::unexpected(std::format("창 생성 실패 (Win32 오류: {}).", GetLastError()));
 		}
 
-		auto reference = std::ref(*window);
+		auto reference = std::ref(static_cast<Window&>(*window));
 		windows.push_back(std::move(window));
 		ShowWindow(hWnd, SW_SHOW);
 		return reference;
@@ -109,9 +111,18 @@ namespace TUK::Framework
 
 	void WindowSubsystem::PostTick()
 	{
-		std::erase_if(windows, [](const auto& window)
+		auto* renderer = Engine::GetInstance()->GetSubsystem<RenderSubsystem>();
+		std::erase_if(windows, [renderer](const auto& window)
 		{
-			return window->ShouldClose();
+			if (!window->ShouldClose())
+			{
+				return false;
+			}
+			if (renderer)
+			{
+				renderer->UnregisterWindow(*window);
+			}
+			return true;
 		});
 		if (windows.empty() && !hasExitRequest && Engine::GetInstance()->IsRunning())
 		{

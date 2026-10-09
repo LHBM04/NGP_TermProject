@@ -3,23 +3,14 @@
 #include <string>
 #include <string_view>
 
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-
-#include <windows.h>
-
 #include "../Math/Vector2D.hpp"
-
-#include "WindowOptions.hpp"
 
 namespace TUK::Framework
 {
 	class Window
 	{
 	public:
-		Window(const WindowOptions& options);
-		~Window() noexcept;
+		virtual ~Window() noexcept = default;
 
 		Window(const Window&) = delete;
 		Window& operator=(const Window&) = delete;
@@ -27,32 +18,23 @@ namespace TUK::Framework
 		Window(Window&&) = delete;
 		Window& operator=(Window&&) = delete;
 
-		[[nodiscard]] HWND GetHWND() const noexcept;
+		[[nodiscard]] virtual std::wstring GetTitle() const = 0;
+		virtual void SetTitle(std::wstring_view title) = 0;
 
-		[[nodiscard]] const std::wstring& GetTitle() const noexcept;
-		void SetTitle(std::wstring_view title) noexcept;
+		[[nodiscard]] virtual Vector2D<int> GetPosition() const noexcept = 0;
+		virtual void SetPosition(const Vector2D<int>& position) noexcept = 0;
 
-		[[nodiscard]] const Vector2D<int>& GetPosition() const noexcept;
-		void SetPosition(const Vector2D<int>& position) noexcept;
+		[[nodiscard]] virtual Vector2D<int> GetSize() const noexcept = 0;
+		virtual void SetSize(const Vector2D<int>& size) noexcept = 0;
 
-		[[nodiscard]] const Vector2D<int>& GetSize() const noexcept;
-		void SetSize(const Vector2D<int>& size) noexcept;
+		[[nodiscard]] virtual bool IsResizable() const noexcept = 0;
+		[[nodiscard]] virtual bool IsBorderless() const noexcept = 0;
+		[[nodiscard]] virtual bool IsFullscreen() const noexcept = 0;
 
-		[[nodiscard]] bool IsResizable() const noexcept;
-		[[nodiscard]] bool IsBorderless() const noexcept;
-		[[nodiscard]] bool IsFullscreen() const noexcept;
+		[[nodiscard]] virtual bool ShouldClose() const noexcept = 0;
+		virtual void RequestClose() noexcept = 0;
 
-		[[nodiscard]] bool ShouldClose() const noexcept;
-		void RequestClose() noexcept;
-
-		LRESULT HandleMessage(HWND handle, UINT message, WPARAM wParam, LPARAM lParam) noexcept;
-
-	private:
-		void UpdateBounds() noexcept;
-
-		HWND hWnd;
-		WindowOptions options;
-		bool shouldClose;
+	protected:
+		Window() noexcept = default;
 	};
 }
-

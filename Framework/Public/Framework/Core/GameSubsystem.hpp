@@ -4,7 +4,7 @@
 
 namespace TUK::Framework
 {
-	class RenderContext;
+	class CommandBuffer;
 
 	class GameSubsystem : public Subsystem
 	{
@@ -19,6 +19,6 @@ namespace TUK::Framework
 		virtual void FixedUpdate();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(RenderContext& renderer);
+		virtual void Render(CommandBuffer& renderer);
 	};
 }

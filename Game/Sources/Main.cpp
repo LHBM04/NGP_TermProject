@@ -1,6 +1,6 @@
 #include "Precompiled.hpp"
-
-using namespace TUK;
+#include "MyEngine.hpp"
+#include "MyGame.hpp"
 
 INT APIENTRY wWinMain(
 	_In_ HINSTANCE hInstance,
@@ -17,9 +17,8 @@ INT APIENTRY wWinMain(
 	freopen_s(&consoleStream, "CONOUT$", "w", stderr);
 #endif
 
-	Framework::Vector2D vec(1, 1);
-	std::cout << "Vector2D: (" << vec.GetX() << ", " << vec.GetY() << ")" << std::endl;
-	while (true);
+	TUK::Game::MyEngine engine;
+	TUK::Game::MyGame game;
 
-	return 0;
+	return engine.Run(game);
 }

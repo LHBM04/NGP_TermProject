@@ -55,8 +55,12 @@
 #include <d3d11sdklayers.h>
 #include <d3dcompiler.h>
 
+#pragma comment(lib, "d3d11.lib")
+
 #include <dxgi1_6.h>
 #include <dxgidebug.h>
+
+#pragma comment(lib, "dxgi.lib")
 
 #include <DirectXCollision.h>
 #include <DirectXColors.h>

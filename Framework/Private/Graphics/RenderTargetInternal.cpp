@@ -3,36 +3,38 @@
 
 namespace TUK::Framework
 {
-	RenderTargetInternal::RenderTargetInternal(
-		Microsoft::WRL::ComPtr<ID3D11Texture2D> texture2D,
-		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv,
-		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> dsv) noexcept
-		: texture2D(texture2D)
-		, rtv(rtv)
-		, dsv(dsv)
+	RenderTargetInternal::RenderTargetInternal(Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv) noexcept
+		: rtv(rtv)
 	{
 	}
 
 	RenderTargetInternal::~RenderTargetInternal() noexcept
 	{
-		if (texture2D)
-		{
-			texture2D.Reset(); 
-			texture2D = nullptr;
-		}
-
 		if (rtv)
 		{
 			rtv.Reset(); 
 			rtv = nullptr;
 		}
-
-		if (dsv)
-		{
-			dsv.Reset(); 
-			dsv = nullptr;
-		}
 	}
 
+	ID3D11RenderTargetView* RenderTargetInternal::GetD3D11RenderTargetView() const noexcept
+	{
+		assert(rtv);
+		return rtv.Get();
+	}
 
+	int RenderTargetInternal::GetWidth() const noexcept
+	{
+		return 0;
+	}
+
+	int RenderTargetInternal::GetHeight() const noexcept
+	{
+		return 0;
+	}
+
+	TextureFormat RenderTargetInternal::GetFormat() const noexcept
+	{
+		return TextureFormat::R8;
+	}
 }

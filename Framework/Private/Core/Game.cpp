@@ -21,19 +21,6 @@ namespace TUK::Framework
 	{
 		Ready();
 		if (GetQuitCode() != EXIT_SUCCESS) return;
-
-		WindowSubsystem* windows = Engine::GetInstance()->GetSubsystem<WindowSubsystem>();
-		if (!windows)
-		{
-			ReportError("게임 창 생성에 WindowSubsystem이 필요합니다.");
-			return;
-		}
-		auto created = windows->Create(windowOptions);
-		if (!created)
-		{
-			ReportError(created.error());
-			return;
-		}
 		System::Startup();
 	}
 

@@ -9,12 +9,24 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\MyEngine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\MyGame.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\Precompiled.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Precompiled.hpp">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\MyGame.hpp">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\MyEngine.hpp">
       <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>

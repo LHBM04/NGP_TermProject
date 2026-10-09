@@ -163,9 +163,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Private\Graphics\BufferInternal.hpp" />
+    <ClInclude Include="Private\Graphics\CommandBufferInternal.hpp" />
     <ClInclude Include="Private\Graphics\RenderDeviceInternal.hpp" />
     <ClInclude Include="Private\Graphics\RenderTargetInternal.hpp" />
+    <ClInclude Include="Private\Graphics\ShaderInternal.hpp" />
     <ClInclude Include="Private\Graphics\SwapChainInternal.hpp" />
+    <ClInclude Include="Private\Graphics\TextureInternal.hpp" />
     <ClInclude Include="Private\Platform\WindowInternal.hpp" />
     <ClInclude Include="Private\Precompiled.hpp" />
     <ClInclude Include="Public\Framework\Core.hpp" />
@@ -176,11 +180,20 @@
     <ClInclude Include="Public\Framework\Core\Subsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\System.hpp" />
     <ClInclude Include="Public\Framework\Graphics.hpp" />
-    <ClInclude Include="Public\Framework\Graphics\RenderContext.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\Buffer.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\CommandBuffer.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\DepthStencil.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\ScissorRect.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderDevice.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderTarget.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\ResourceState.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\Sampler.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\Shader.hpp" />
     <ClInclude Include="Public\Framework\Graphics\SwapChain.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\Texture.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\TextureFormat.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\Viewport.hpp" />
     <ClInclude Include="Public\Framework\Math.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGB.hpp" />
     <ClInclude Include="Public\Framework\Math\ColorRGBA.hpp" />
@@ -204,10 +217,13 @@
     <ClCompile Include="Private\Core\GameSubsystem.cpp" />
     <ClCompile Include="Private\Core\Subsystem.cpp" />
     <ClCompile Include="Private\Core\System.cpp" />
+    <ClCompile Include="Private\Graphics\BufferInternal.cpp" />
+    <ClCompile Include="Private\Graphics\CommandBufferInternal.cpp" />
     <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp" />
     <ClCompile Include="Private\Graphics\RenderSubsystem.cpp" />
     <ClCompile Include="Private\Graphics\RenderTargetInternal.cpp" />
     <ClCompile Include="Private\Graphics\SwapChainInternal.cpp" />
+    <ClCompile Include="Private\Graphics\TextureInternal.cpp" />
     <ClCompile Include="Private\Math\ColorRGB.cpp" />
     <ClCompile Include="Private\Math\ColorRGBA.cpp" />
     <ClCompile Include="Private\Math\Matrix4x4.cpp" />
@@ -217,7 +233,6 @@
     <ClCompile Include="Private\Math\Vector4D.cpp" />
     <ClCompile Include="Private\Platform\EventSubsystem.cpp" />
     <ClCompile Include="Private\Platform\TimeSubsystem.cpp" />
-    <ClCompile Include="Private\Platform\Window.cpp" />
     <ClCompile Include="Private\Platform\WindowInternal.cpp" />
     <ClCompile Include="Private\Platform\WindowOptions.cpp" />
     <ClCompile Include="Private\Platform\WindowSubsystem.cpp" />

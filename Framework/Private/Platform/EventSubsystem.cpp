@@ -3,17 +3,17 @@
 
 #include "Framework/Core/Engine.hpp"
 
-#include "Framework/Platform/Window.hpp"
+#include "Platform/WindowInternal.hpp"
 
 namespace
 {
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
-		auto* window = reinterpret_cast<TUK::Framework::Window*>(GetWindowLongPtrW(hWnd, GWLP_USERDATA));
+		auto* window = reinterpret_cast<TUK::Framework::WindowInternal*>(GetWindowLongPtrW(hWnd, GWLP_USERDATA));
 		if (message == WM_NCCREATE)
 		{
 			const auto* creation = reinterpret_cast<const CREATESTRUCTW*>(lParam);
-			window = static_cast<TUK::Framework::Window*>(creation->lpCreateParams);
+			window = static_cast<TUK::Framework::WindowInternal*>(creation->lpCreateParams);
 			if (!window)
 			{
 				return FALSE;
@@ -59,6 +59,7 @@ namespace TUK::Framework
 				Engine::GetInstance()->RequestQuit(static_cast<int>(message.wParam));
 				break;
 			}
+
 			TranslateMessage(&message);
 			DispatchMessageW(&message);
 		}

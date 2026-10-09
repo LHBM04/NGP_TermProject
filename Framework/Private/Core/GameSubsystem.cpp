@@ -28,7 +28,7 @@ namespace TUK::Framework
 	{
 	}
 
-	void GameSubsystem::Render(RenderContext&)
+	void GameSubsystem::Render(CommandBuffer&)
 	{
 	}
 }
