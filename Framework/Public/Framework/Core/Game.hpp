@@ -4,19 +4,31 @@
 
 #include "GameSubsystem.hpp"
 #include "System.hpp"
-#include "../Platform/WindowOptions.hpp"
+
+#define DECLARE_GAME_INSTANCE() \
+	friend ::TUK::Framework::Game* ::TUK::Framework::CreateGameInstance()
+
+#define DEFINE_GAME_INSTANCE(GameType) \
+	namespace TUK::Framework \
+	{ \
+		Game* CreateGameInstance() \
+		{ \
+			static_assert(std::derived_from<GameType, Game>); \
+			return new GameType(); \
+		} \
+	}
 
 namespace TUK::Framework
 {
-	class TimeSubsystem;
+	class Game;
+	extern Game* CreateGameInstance();
 
 	class Game : public System
 	{
 		friend class Engine;
 
 	public:
-		explicit Game(const WindowOptions& windowOptions = WindowOptions{});
-		~Game() override;
+		~Game() noexcept override = default;
 
 		template <std::derived_from<GameSubsystem> TSubsystem>
 		TSubsystem* AddSubsystem();
@@ -33,14 +45,10 @@ namespace TUK::Framework
 		/** Overloaded for Game */
 		[[nodiscard]] static Game* GetInstance();
 
-	protected:
-		void OnReady() override;
-		void SetWindowOptions(const WindowOptions& windowOptions);
+		void Tick() override;
 
-	private:
-		void Startup();
-		void Tick();
-		WindowOptions windowOptions;
+	protected:
+		Game() noexcept = default;
 	};
 
 	template <std::derived_from<GameSubsystem> TSubsystem>

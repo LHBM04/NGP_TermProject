@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Framework/Core/Engine.hpp"
 
@@ -6,10 +6,13 @@ namespace TUK::Game
 {
 	class MyEngine final : public Framework::Engine
 	{
-	public:
-		MyEngine() noexcept;
-		~MyEngine() noexcept override;
+		DECLARE_ENGINE_INSTANCE();
 
-		void OnReady() override;
+	public:
+		void Ready() override;
+
+	private:
+		MyEngine() noexcept = default;
+		~MyEngine() noexcept override = default;
 	};
 }

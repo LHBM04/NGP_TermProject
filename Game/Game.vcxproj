@@ -100,6 +100,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -119,6 +120,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -136,6 +138,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -155,6 +158,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -164,7 +168,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\MyEngine.cpp" />
     <ClCompile Include="Sources\MyGame.cpp" />
     <ClCompile Include="Sources\Precompiled.cpp">

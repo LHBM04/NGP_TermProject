@@ -4,66 +4,40 @@
 #include "Framework/Core/Engine.hpp"
 
 #include "Framework/Platform/TimeSubsystem.hpp"
-#include "Framework/Platform/WindowSubsystem.hpp"
 
 namespace TUK::Framework
 {
-	Game::Game(const WindowOptions& windowOptions)
-		: windowOptions(windowOptions)
-	{
-	}
-
-	Game::~Game() noexcept
-	{
-	}
-
-	void Game::Startup()
-	{
-		Ready();
-		if (GetQuitCode() != EXIT_SUCCESS) return;
-		System::Startup();
-	}
-
-	void Game::OnReady()
-	{
-	}
-
-	void Game::SetWindowOptions(const WindowOptions& windowOptions)
-	{
-		this->windowOptions = windowOptions;
-	}
-
 	Game* Game::GetInstance()
 	{
-		Game* game = Engine::GetInstance()->game;
-		assert(game);
-		return game;
+		return static_cast<Game*>(System::GetInstance());
 	}
 
 	void Game::Tick()
 	{
-		TimeSubsystem* time = Engine::GetInstance()->GetSubsystem<TimeSubsystem>();
-		assert(time);
-
-		for (auto& subsystem : GetSubsystems())
+		for (GameSubsystem& subsystem : GetSubsystems())
 		{
 			subsystem.EarlyUpdate();
 		}
 
-		while (time->ShouldFixedStep())
+		// 시간이 있을 때만 가능해야 함.
+		// 근데 Game이 TimeSubsystem을 알고 있어야 하는 게 맘에 안 듦.
+		if (TimeSubsystem* const time = Engine::GetInstance()->GetSubsystem<TimeSubsystem>())
 		{
-			for (auto& subsystem : GetSubsystems())
+			while (time->ShouldFixedStep())
 			{
-				subsystem.FixedUpdate();
+				for (GameSubsystem& subsystem : GetSubsystems())
+				{
+					subsystem.FixedUpdate();
+				}
 			}
 		}
 
-		for (auto& subsystem : GetSubsystems())
+		for (GameSubsystem& subsystem : GetSubsystems())
 		{
 			subsystem.Update();
 		}
 
-		for (auto& subsystem : GetSubsystems())
+		for (GameSubsystem& subsystem : GetSubsystems())
 		{
 			subsystem.LateUpdate();
 		}

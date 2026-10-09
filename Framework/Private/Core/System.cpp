@@ -43,21 +43,16 @@ namespace TUK::Framework
 
 	void System::Ready()
 	{
-		if (isReady) return;
-		OnReady();
-		isReady = true;
-	}
-
-	void System::OnReady()
-	{
 	}
 
 	void System::Startup()
 	{
-		// 게임 서비스 시작이 이미 실행 중인 엔진의 싱글턴을 덮어쓰지 않도록 한다.
-		if (!instance) instance = this;
-		Ready();
-		if (quitCode != EXIT_SUCCESS) return;
+		instance = this;
+		
+		if (quitCode != EXIT_SUCCESS)
+		{
+			return;
+		}
 
 		isRunning = true;
 
@@ -66,6 +61,18 @@ namespace TUK::Framework
 		{
 			subsystem->OnStartup();
 		}
+	}
+
+	void System::PreTick()
+	{
+	}
+
+	void System::Tick()
+	{
+	}
+
+	void System::PostTick()
+	{
 	}
 
 	void System::Shutdown()
@@ -80,8 +87,7 @@ namespace TUK::Framework
 		subsystems.clear();
 		subsystemsByType.clear();
 
-		isReady = false;
-		if (instance == this) instance = nullptr;
+		instance = nullptr;
 	}
 
 	int System::GetQuitCode() const noexcept

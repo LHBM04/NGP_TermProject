@@ -1,22 +1,33 @@
 ﻿#pragma once
 
+#include <concepts>
+
 #include "EngineSubsystem.hpp"
 #include "System.hpp"
 
+#define DECLARE_ENGINE_INSTANCE() \
+	friend ::TUK::Framework::Engine* ::TUK::Framework::CreateEngineInstance()
+
+#define DEFINE_ENGINE_INSTANCE(Type) \
+	namespace TUK::Framework \
+	{ \
+		Engine* CreateEngineInstance() \
+		{ \
+			static_assert(std::derived_from<Type, Engine>); \
+			return new Type(); \
+		} \
+	}
+
 namespace TUK::Framework
 {
-	class Game;
+	class Engine;
+	extern Engine* CreateEngineInstance();
 
 	class Engine : public System
 	{
-		friend class Game;
-
 	public:
-		Engine() noexcept;
 		~Engine() noexcept override;
 		
-		int Run(Game& game);
-
 		template <std::derived_from<EngineSubsystem> TSubsystem>
 		TSubsystem* AddSubsystem();
 
@@ -26,24 +37,19 @@ namespace TUK::Framework
 		template <std::derived_from<EngineSubsystem> TSubsystem>
 		[[nodiscard]] const TSubsystem* GetSubsystem() const;
 
-		template <std::derived_from<EngineSubsystem> TSubsystem>
 		[[nodiscard]] auto GetSubsystems();
-
-		template <std::derived_from<EngineSubsystem> TSubsystem>
 		[[nodiscard]] const auto GetSubsystems() const;
 
 		/** Overloaded for Engine */
 		[[nodiscard]] static Engine* GetInstance();
 
+		/** 엔진 라이프 사이클 */
+		void PreTick() override;
+		void Tick() override;
+		void PostTick() override;
+
 	protected:
-		void OnReady() override;
-
-	private:
-		void PreTick();
-		void Tick();
-		void PostTick();
-
-		Game* game = nullptr;
+		Engine() noexcept;
 	};
 
 	template <std::derived_from<EngineSubsystem> TSubsystem>
@@ -64,15 +70,13 @@ namespace TUK::Framework
 		return System::GetSubsystem<TSubsystem>();
 	}
 
-	template <std::derived_from<EngineSubsystem> TSubsystem>
-	auto Engine::GetSubsystems()
+	inline auto Engine::GetSubsystems()
 	{
-		return System::GetSubsystems<TSubsystem>();
+		return System::GetSubsystems<EngineSubsystem>();
 	}
 
-	template <std::derived_from<EngineSubsystem> TSubsystem>
-	const auto Engine::GetSubsystems() const
+	inline const auto Engine::GetSubsystems() const
 	{
-		return System::GetSubsystems<TSubsystem>();
+		return System::GetSubsystems<EngineSubsystem>();
 	}
 }

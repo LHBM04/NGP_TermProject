@@ -6,9 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Main.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\MyEngine.cpp">
       <Filter>Sources</Filter>
     </ClCompile>

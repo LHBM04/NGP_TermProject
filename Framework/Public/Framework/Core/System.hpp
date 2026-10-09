@@ -30,7 +30,6 @@ namespace TUK::Framework
 	class System
 	{
 	public:
-		System() noexcept;
 		virtual ~System() noexcept;
 
 		System(const System&) = delete;
@@ -57,11 +56,16 @@ namespace TUK::Framework
 		template <OptionType TOption>
 		[[nodiscard]] const TOption& GetOption(const std::string& key) const;
 
+		/** 시스템 라이프 사이클 */
+		virtual void Ready();
+		virtual void Startup();
+		virtual void PreTick();
+		virtual void Tick();
+		virtual void PostTick();
+		virtual void Shutdown();
+
 	protected:
-		void Ready();
-		virtual void OnReady();
-		void Startup();
-		void Shutdown();
+		System() noexcept;
 
 		template <std::derived_from<Subsystem> TSubsystem>
 		TSubsystem* AddSubsystem();

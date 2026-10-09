@@ -1,6 +1,8 @@
-#include "Precompiled.hpp"
+﻿#include "Precompiled.hpp"
 #include "MyGame.hpp"
 #include "MyEngine.hpp"
+
+DEFINE_GAME_INSTANCE(::TUK::Game::MyGame)
 
 namespace TUK::Game
 {
@@ -12,7 +14,7 @@ namespace TUK::Game
 	{
 	}
 
-	void MyGame::OnReady()
+	void MyGame::Ready()
 	{
 		Framework::WindowOptions options{};
 		options.title = L"Virus Striker";

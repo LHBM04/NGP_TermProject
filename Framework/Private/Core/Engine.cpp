@@ -13,53 +13,14 @@ namespace TUK::Framework
 	{
 	}
 
-	void Engine::OnReady()
+	Engine* Engine::GetInstance()
 	{
-	}
-
-	int Engine::Run(Game& game)
-	{
-		this->game = &game;
-
-		Startup();
-
-		if (IsRunning())
-		{
-			game.Startup();
-
-			if (!game.IsRunning())
-			{
-				RequestQuit(game.GetQuitCode());
-			}
-
-			while (IsRunning())
-			{
-				PreTick();
-				Tick();
-				PostTick();
-
-				if (!game.IsRunning())
-				{
-					RequestQuit(game.GetQuitCode());
-				}
-			}
-
-			game.Shutdown();
-
-			if (game.GetQuitCode() != EXIT_SUCCESS)
-			{
-				RequestQuit(game.GetQuitCode());
-			}
-		}
-
-		Shutdown();
-		this->game = nullptr;
-		return GetQuitCode();
+		return static_cast<Engine*>(System::GetInstance());
 	}
 
 	void Engine::PreTick()
 	{
-		for (auto& subsystem : GetSubsystems<EngineSubsystem>())
+		for (EngineSubsystem& subsystem : GetSubsystems())
 		{
 			subsystem.PreTick();
 		}
@@ -67,27 +28,17 @@ namespace TUK::Framework
 
 	void Engine::Tick()
 	{
-		for (auto& subsystem : GetSubsystems<EngineSubsystem>())
+		for (auto& subsystem : GetSubsystems())
 		{
 			subsystem.Tick();
-		}
-
-		if (IsRunning())
-		{
-			game->Tick();
 		}
 	}
 
 	void Engine::PostTick()
 	{
-		for (auto& subsystem : GetSubsystems<EngineSubsystem>())
+		for (auto& subsystem : GetSubsystems())
 		{
 			subsystem.PostTick();
 		}
-	}
-
-	Engine* Engine::GetInstance()
-	{
-		return static_cast<Engine*>(System::GetInstance());
 	}
 }

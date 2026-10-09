@@ -1,17 +1,11 @@
-#include "Precompiled.hpp"
+﻿#include "Precompiled.hpp"
 #include "MyEngine.hpp"
+
+DEFINE_ENGINE_INSTANCE(::TUK::Game::MyEngine)
 
 namespace TUK::Game
 {
-	MyEngine::MyEngine() noexcept
-	{
-	}
-
-	MyEngine::~MyEngine() noexcept
-	{
-	}
-
-	void MyEngine::OnReady()
+	void MyEngine::Ready()
 	{
 		AddSubsystem<Framework::TimeSubsystem>();
 		AddSubsystem<Framework::WindowSubsystem>();
