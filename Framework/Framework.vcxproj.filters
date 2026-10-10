@@ -275,5 +275,8 @@
     <ClCompile Include="Private\Core\Entry.cpp">
       <Filter>Private\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Private\Entities\Scene.cpp">
+      <Filter>Private\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

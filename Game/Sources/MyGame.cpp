@@ -16,7 +16,12 @@ namespace TUK::Game
 
 	void MyGame::Ready()
 	{
-		Framework::WindowOptions options{};
+		RequireWindow();
+	}
+
+	void MyGame::RequireWindow()
+	{
+		WindowOptions options{};
 		options.title = L"Virus Striker";
 		options.position = Framework::Vector2D(100, 100);
 		options.size = Framework::Vector2D(1280, 960);
@@ -24,31 +29,23 @@ namespace TUK::Game
 		options.isBorderless = false;
 		options.isResizable = false;
 
-		Framework::WindowSubsystem* windowSubsystem = MyEngine::GetInstance()->GetSubsystem<Framework::WindowSubsystem>();
-		if (windowSubsystem)
-		{
-			auto windowResult = windowSubsystem->Create(options);
-			if (!windowResult)
-			{
-				ReportError(windowResult.error());
-				return;
-			}
+		WindowSubsystem* windowSubsystem = MyEngine::GetInstance()->GetSubsystem<WindowSubsystem>();
+		assert(windowSubsystem);
 
-			Framework::RenderSubsystem* renderSubsystem = MyEngine::GetInstance()->GetSubsystem<Framework::RenderSubsystem>();
-			if (renderSubsystem)
-			{
-				renderSubsystem->RegisterWindow(windowResult.value());
-			}
-			else
-			{
-				ReportError("RenderSubsystem not found.");
-				return;
-			}
-		}
-		else
-		{
-			ReportError("WindowSubsystem not found.");
-			return;
-		}
+		window = windowSubsystem->Create(options).value_or(nullptr);
+		assert(window);
+
+		RenderSubsystem* renderSubsystem = MyEngine::GetInstance()->GetSubsystem<RenderSubsystem>();
+		assert(renderSubsystem);
+
+		renderSubsystem->RegisterWindow(*window);
+	}
+
+	void MyGame::RequireScenes()
+	{
+		SceneSubsystem* sceneSubsystem = AddSubsystem<SceneSubsystem>();
+		assert(sceneSubsystem);
+
+		sceneSubsystem->AddScene<Scene_Stage1>(0, L"Stage1");
 	}
 }

@@ -221,6 +221,7 @@
     <ClCompile Include="Private\Core\GameSubsystem.cpp" />
     <ClCompile Include="Private\Core\Subsystem.cpp" />
     <ClCompile Include="Private\Core\System.cpp" />
+    <ClCompile Include="Private\Entities\Scene.cpp" />
     <ClCompile Include="Private\Entities\SceneSubsystem.cpp" />
     <ClCompile Include="Private\Graphics\BufferInternal.cpp" />
     <ClCompile Include="Private\Graphics\CommandBufferInternal.cpp" />

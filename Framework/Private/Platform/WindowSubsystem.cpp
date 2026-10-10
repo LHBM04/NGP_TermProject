@@ -31,7 +31,7 @@ namespace TUK::Framework
 		OnShutdown();
 	}
 
-	std::expected<std::reference_wrapper<Window>, std::string> WindowSubsystem::Create(const WindowOptions& options)
+	std::expected<Window*, std::string> WindowSubsystem::Create(const WindowOptions& options)
 	{
 		assert(options.size.GetX() > 0 && options.size.GetY() > 0);
 		if (!windowClass || hasExitRequest)
@@ -82,11 +82,9 @@ namespace TUK::Framework
 		{
 			return std::unexpected(std::format("창 생성 실패 (Win32 오류: {}).", GetLastError()));
 		}
-
-		auto reference = std::ref(static_cast<Window&>(*window));
 		windows.push_back(std::move(window));
 		ShowWindow(hWnd, SW_SHOW);
-		return reference;
+		return windows.back().get();
 	}
 
 	const std::vector<std::unique_ptr<Window>>& WindowSubsystem::GetWindows() const noexcept

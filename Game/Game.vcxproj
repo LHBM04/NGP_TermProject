@@ -181,6 +181,7 @@
     <ClInclude Include="Sources\MyEngine.hpp" />
     <ClInclude Include="Sources\MyGame.hpp" />
     <ClInclude Include="Sources\Precompiled.hpp" />
+    <ClInclude Include="Sources\Scenes\Scene_Stage1.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

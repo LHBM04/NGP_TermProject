@@ -8,7 +8,9 @@ namespace TUK::Framework
 	{
 	}
 
-	Subsystem::~Subsystem() noexcept = default;
+	Subsystem::~Subsystem() noexcept
+	{
+	}
 
 	unsigned short Subsystem::GetPriority() const noexcept
 	{

@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include <expected>
-#include <functional>
 #include <memory>
 #include <string>
 #include <vector>
@@ -19,7 +18,7 @@ namespace TUK::Framework
 		~WindowSubsystem() noexcept override;
 
 		/** OnStartup 이후 호출. 크기는 창 전체 영역 기준. */
-		std::expected<std::reference_wrapper<Window>, std::string> Create(const WindowOptions& options);
+		std::expected<Window*, std::string> Create(const WindowOptions& options);
 
 		[[nodiscard]] const std::vector<std::unique_ptr<Window>>& GetWindows() const noexcept;
 

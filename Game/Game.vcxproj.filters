@@ -4,6 +4,9 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{47c97882-2b52-4235-aa36-a8c77800b231}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Scenes">
+      <UniqueIdentifier>{2f63ae94-bcc0-47a9-a2f3-4b9be7f9d231}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\MyEngine.cpp">
@@ -25,6 +28,9 @@
     </ClInclude>
     <ClInclude Include="Sources\MyEngine.hpp">
       <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Scenes\Scene_Stage1.hpp">
+      <Filter>Sources\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

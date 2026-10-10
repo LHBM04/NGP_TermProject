@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <algorithm>
 #include <array>
@@ -48,6 +48,7 @@
 #include <windowsx.h>
 
 #include "Framework/Core.hpp"
+#include "Framework/Entities.hpp"
 #include "Framework/Graphics.hpp"
 #include "Framework/Math.hpp"
 #include "Framework/Platform.hpp"
@@ -55,3 +56,5 @@
 #pragma comment(lib, "framework.lib")
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
+
+using namespace TUK::Framework;
