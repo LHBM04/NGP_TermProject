@@ -20,6 +20,6 @@ namespace TUK::Game
 		void RequireWindow();
 		void RequireScenes();
 
-		Window* window;
+		Framework::Window* window = nullptr;
 	};
 }

@@ -9,8 +9,9 @@ namespace TUK::Framework
 {
 	class CommandBuffer;
 	class SwapChain;
-	class RenderDevice;
+	class GraphicsDevice;
 	class Window;
+	class RenderTarget;
 
 	class RenderSubsystem : public EngineSubsystem
 	{
@@ -24,8 +25,10 @@ namespace TUK::Framework
 		/** 창 파괴 전에 호출한다. 등록되지 않은 창은 무시한다. */
 		void UnregisterWindow(const Window& window);
 
+		[[nodiscard]] RenderTarget* GetTarget(const Window& window) const noexcept;
+
 		/** 디바이스 Getter */
-		[[nodiscard]] RenderDevice* GetDevice() const noexcept;
+		[[nodiscard]] GraphicsDevice* GetDevice() const noexcept;
 
 		/** 명령 리스트 Getter */
 		[[nodiscard]] CommandBuffer* GetCommandBuffer() const noexcept;
@@ -39,7 +42,7 @@ namespace TUK::Framework
 
 	private:
 		/** 디바이스 */
-		std::unique_ptr<RenderDevice> device;
+		std::unique_ptr<GraphicsDevice> device;
 
 		/** 명령 리스트 */
 		std::unique_ptr<CommandBuffer> commandBuffer;

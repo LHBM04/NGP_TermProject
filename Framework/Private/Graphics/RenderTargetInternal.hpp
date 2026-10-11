@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <wrl.h>
 #include <dxgi1_6.h>
@@ -9,7 +9,7 @@ namespace TUK::Framework
 {
 	class RenderTargetInternal : public RenderTarget
 	{
-		friend class RenderDeviceInternal;
+		friend class GraphicsDeviceInternal;
 
 	public:
 		RenderTargetInternal(Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv) noexcept;

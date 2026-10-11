@@ -1,6 +1,7 @@
 ﻿#pragma once 
 
 #include <memory>
+#include <string_view>
 
 namespace TUK::Framework
 {
@@ -10,17 +11,18 @@ namespace TUK::Framework
 	class RenderTarget;
 	class SwapChain;
 	class Window;
+	class Shader;
 	
-	class RenderDevice
+	class GraphicsDevice
 	{
 	public:
-		virtual ~RenderDevice() noexcept = default;
+		virtual ~GraphicsDevice() noexcept = default;
 
-		RenderDevice(const RenderDevice&) noexcept = delete;
-		RenderDevice& operator=(const RenderDevice&) noexcept = delete;
+		GraphicsDevice(const GraphicsDevice&) noexcept = delete;
+		GraphicsDevice& operator=(const GraphicsDevice&) noexcept = delete;
 		
-		RenderDevice(RenderDevice&&) noexcept = delete;
-		RenderDevice& operator=(RenderDevice&&) noexcept = delete;
+		GraphicsDevice(GraphicsDevice&&) noexcept = delete;
+		GraphicsDevice& operator=(GraphicsDevice&&) noexcept = delete;
 
 		/** 명령 제출 */
 		virtual void Submit(const CommandBuffer& commandBuffer) const = 0;
@@ -37,7 +39,12 @@ namespace TUK::Framework
 		/** 렌더 타겟 생성 */
 		[[nodiscard]] virtual std::unique_ptr<RenderTarget> CreateTarget() const = 0;
 
+		[[nodiscard]] virtual std::unique_ptr<Shader> CreateVertexShader(std::string_view source,
+			std::string_view entryPoint = "VSMain") const = 0;
+		[[nodiscard]] virtual std::unique_ptr<Shader> CreatePixelShader(std::string_view source,
+			std::string_view entryPoint = "PSMain") const = 0;
+
 	protected:
-		RenderDevice() noexcept = default;
+		GraphicsDevice() noexcept = default;
 	};
 }

@@ -36,7 +36,7 @@ using namespace TUK::Framework;
 				return 1;
 			}
 
-			while (game->IsRunning())
+			while (engine->IsRunning() && game->IsRunning())
 			{
 				engine->PreTick();
 				game->PreTick();
@@ -83,7 +83,7 @@ using namespace TUK::Framework;
 				return 1;
 			}
 
-			while (game->IsRunning())
+			while (engine->IsRunning() && game->IsRunning())
 			{
 				engine->PreTick();
 				game->PreTick();

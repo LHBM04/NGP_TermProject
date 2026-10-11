@@ -38,6 +38,7 @@ namespace TUK::Framework
 
 		void SetVertexShader(const Shader& vertexShader) override;
 		void SetPixelShader(const Shader& pixelShader) override;
+		void SetPrimitiveTopology(PrimitiveTopology topology) override;
 
 		void SetVertexBuffer(
 			Buffer& buffer,

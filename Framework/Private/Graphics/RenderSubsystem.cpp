@@ -4,13 +4,13 @@
 #include "Framework/Core/Engine.hpp"
 
 #include "Framework/Graphics/CommandBuffer.hpp"
-#include "Framework/Graphics/RenderDevice.hpp"
+#include "Framework/Graphics/GraphicsDevice.hpp"
 #include "Framework/Graphics/SwapChain.hpp"
 
 #include "Platform/WindowInternal.hpp"
 
 #include "CommandBufferInternal.hpp"
-#include "RenderDeviceInternal.hpp"
+#include "GraphicsDeviceInternal.hpp"
 #include "SwapChainInternal.hpp"
 
 namespace TUK::Framework
@@ -22,10 +22,10 @@ namespace TUK::Framework
 
 	RenderSubsystem::~RenderSubsystem() noexcept
 	{
-		if (device)
+		if (graphicsDevice)
 		{
-			device.reset();
-			device = nullptr;
+			graphicsDevice.reset();
+			graphicsDevice = nullptr;
 		}
 	}
 
@@ -36,7 +36,7 @@ namespace TUK::Framework
 			return;
 		}
 
-		std::unique_ptr<SwapChain> swapChain = device->CreateSwapChain(window);
+		std::unique_ptr<SwapChain> swapChain = graphicsDevice->CreateSwapChain(window);
 		if (!swapChain)
 		{
 			Engine::GetInstance()->ReportError("창의 스왑 체인 생성에 실패했습니다.");
@@ -51,10 +51,20 @@ namespace TUK::Framework
 		swapChains.erase(&window);
 	}
 
-	RenderDevice* RenderSubsystem::GetDevice() const noexcept
+	RenderTarget* RenderSubsystem::GetTarget(const Window& window) const noexcept
 	{
-		assert(device);
-		return device.get();
+		const auto found = swapChains.find(&window);
+		if (found == swapChains.end())
+		{
+			return nullptr;
+		}
+		return &found->second->GetTarget();
+	}
+
+	GraphicsDevice* RenderSubsystem::GetDevice() const noexcept
+	{
+		assert(graphicsDevice);
+		return graphicsDevice.get();
 	}
 
 	CommandBuffer* RenderSubsystem::GetCommandBuffer() const noexcept
@@ -86,7 +96,7 @@ namespace TUK::Framework
 			return;
 		}
 
-		device = std::make_unique<RenderDeviceInternal>(d3dDevice);
+		graphicsDevice = std::make_unique<GraphicsDeviceInternal>(d3dDevice);
 
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> d3dDeviceContext;
 		if (FAILED(d3dDevice->CreateDeferredContext(0, &d3dDeviceContext)))
@@ -103,10 +113,10 @@ namespace TUK::Framework
 	{
 		commandBuffer.reset();
 		swapChains.clear();
-		if (device)
+		if (graphicsDevice)
 		{
-			device.reset();
-			device = nullptr;
+			graphicsDevice.reset();
+			graphicsDevice = nullptr;
 		}
 	}
 
@@ -123,7 +133,7 @@ namespace TUK::Framework
 	void RenderSubsystem::PostTick()
 	{
 		commandBuffer->End();
-		device->Submit(*commandBuffer);
+		graphicsDevice->Submit(*commandBuffer);
 		for (const auto& entry : swapChains)
 		{
 			entry.second->Present();

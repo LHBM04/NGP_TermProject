@@ -132,10 +132,10 @@
     <ClInclude Include="Private\Graphics\RenderTargetInternal.hpp">
       <Filter>Private\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Public\Framework\Graphics\RenderDevice.hpp">
+    <ClInclude Include="Public\Framework\Graphics\GraphicsDevice.hpp">
       <Filter>Public\Framework\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Private\Graphics\RenderDeviceInternal.hpp">
+    <ClInclude Include="Private\Graphics\GraphicsDeviceInternal.hpp">
       <Filter>Private\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Private\Graphics\SwapChainInternal.hpp">
@@ -188,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="Public\Framework\Entities.hpp">
       <Filter>Public\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Framework\Entities\Entity.hpp">
+      <Filter>Public\Framework\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -254,7 +257,7 @@
     <ClCompile Include="Private\Graphics\RenderTargetInternal.cpp">
       <Filter>Private\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp">
+    <ClCompile Include="Private\Graphics\GraphicsDeviceInternal.cpp">
       <Filter>Private\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Private\Graphics\SwapChainInternal.cpp">

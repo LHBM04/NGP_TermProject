@@ -4,7 +4,7 @@
 #include "Graphics/CommandBuffer.hpp"
 #include "Graphics/DepthStencil.hpp"
 #include "Graphics/ScissorRect.hpp"
-#include "Graphics/RenderDevice.hpp"
+#include "Graphics/GraphicsDevice.hpp"
 #include "Graphics/RenderSubsystem.hpp"
 #include "Graphics/RenderTarget.hpp"
 #include "Graphics/ResourceState.hpp"

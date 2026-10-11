@@ -1,5 +1,5 @@
 ﻿#include "Precompiled.hpp"
-#include "Graphics/RenderDeviceInternal.hpp"
+#include "Graphics/GraphicsDeviceInternal.hpp"
 
 #include "Framework/Graphics/Buffer.hpp"
 #include "Framework/Graphics/Texture.hpp"
@@ -12,17 +12,73 @@
 #include "RenderTargetInternal.hpp"
 #include "SwapChainInternal.hpp"
 #include "TextureInternal.hpp"
+#include "ShaderInternal.hpp"
+
+#include <stdexcept>
+
+#pragma comment(lib, "d3dcompiler.lib")
+
+namespace
+{
+	Microsoft::WRL::ComPtr<ID3DBlob> CompileShader(std::string_view source,
+		std::string_view entryPoint, const char* profile)
+	{
+		const std::string entry(entryPoint);
+		UINT flags = D3DCOMPILE_ENABLE_STRICTNESS;
+#ifdef _DEBUG
+		flags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#endif
+		Microsoft::WRL::ComPtr<ID3DBlob> bytecode;
+		Microsoft::WRL::ComPtr<ID3DBlob> errors;
+		const HRESULT result = D3DCompile(source.data(), source.size(), "Scene shader",
+			nullptr, nullptr, entry.c_str(), profile, flags, 0, &bytecode, &errors);
+		if (FAILED(result))
+		{
+			const std::string message = errors
+				? std::string(static_cast<const char*>(errors->GetBufferPointer()), errors->GetBufferSize())
+				: std::format("Shader compilation failed (HRESULT: 0x{:08X}).", static_cast<unsigned long>(result));
+			throw std::runtime_error(message);
+		}
+		return bytecode;
+	}
+}
 
 namespace TUK::Framework
 {
-	RenderDeviceInternal::RenderDeviceInternal(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice) noexcept
+	std::unique_ptr<Shader> GraphicsDeviceInternal::CreateVertexShader(std::string_view source,
+		std::string_view entryPoint) const
+	{
+		const auto bytecode = CompileShader(source, entryPoint, "vs_4_0");
+		Microsoft::WRL::ComPtr<ID3D11VertexShader> shader;
+		if (FAILED(d3dDevice->CreateVertexShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, &shader)))
+		{
+			throw std::runtime_error("Vertex shader creation failed.");
+		}
+		Microsoft::WRL::ComPtr<ID3D11DeviceChild> nativeShader = shader;
+		return std::make_unique<ShaderInternal>(std::move(nativeShader));
+	}
+
+	std::unique_ptr<Shader> GraphicsDeviceInternal::CreatePixelShader(std::string_view source,
+		std::string_view entryPoint) const
+	{
+		const auto bytecode = CompileShader(source, entryPoint, "ps_4_0");
+		Microsoft::WRL::ComPtr<ID3D11PixelShader> shader;
+		if (FAILED(d3dDevice->CreatePixelShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, &shader)))
+		{
+			throw std::runtime_error("Pixel shader creation failed.");
+		}
+		Microsoft::WRL::ComPtr<ID3D11DeviceChild> nativeShader = shader;
+		return std::make_unique<ShaderInternal>(std::move(nativeShader));
+	}
+
+	GraphicsDeviceInternal::GraphicsDeviceInternal(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice) noexcept
 		: d3dDevice(std::move(d3dDevice))
 		, d3dDeviceContext(nullptr)
 	{
         this->d3dDevice->GetImmediateContext(&d3dDeviceContext);
 	}
 
-	RenderDeviceInternal::~RenderDeviceInternal() noexcept
+	GraphicsDeviceInternal::~GraphicsDeviceInternal() noexcept
 	{
 		if (d3dDevice)
 		{
@@ -31,26 +87,26 @@ namespace TUK::Framework
 		}
 	}
 
-	ID3D11Device* RenderDeviceInternal::GetD3D11Device() const noexcept
+	ID3D11Device* GraphicsDeviceInternal::GetD3D11Device() const noexcept
     {
         assert(d3dDevice);
         return d3dDevice.Get();
 	}
 
-    ID3D11DeviceContext* RenderDeviceInternal::GetD3D11DeviceContext() const noexcept
+    ID3D11DeviceContext* GraphicsDeviceInternal::GetD3D11DeviceContext() const noexcept
     {
         assert(d3dDeviceContext);
         return d3dDeviceContext.Get();
     }
 
-    void RenderDeviceInternal::Submit(const CommandBuffer& commandBuffer) const
+    void GraphicsDeviceInternal::Submit(const CommandBuffer& commandBuffer) const
     {
 		CommandBufferInternal& commandBufferInternal = static_cast<CommandBufferInternal&>(const_cast<CommandBuffer&>(commandBuffer));
 		ID3D11CommandList* d3dCommandList = commandBufferInternal.GetD3D11CommandList();
 	    d3dDeviceContext->ExecuteCommandList(d3dCommandList, FALSE);
     }
 
-	std::unique_ptr<SwapChain> RenderDeviceInternal::CreateSwapChain(const Window& window) const
+	std::unique_ptr<SwapChain> GraphicsDeviceInternal::CreateSwapChain(const Window& window) const
 	{
 		const auto* windowInternal = dynamic_cast<const WindowInternal*>(&window);
 		if (!d3dDevice || !windowInternal)
@@ -129,7 +185,7 @@ namespace TUK::Framework
 		return std::make_unique<SwapChainInternal>(std::move(dxgiSwapChain), std::move(renderTarget));
 	}
 
-    std::unique_ptr<Buffer> RenderDeviceInternal::CreateBuffer(size_t size) const
+    std::unique_ptr<Buffer> GraphicsDeviceInternal::CreateBuffer(size_t size) const
 	{
 		D3D11_BUFFER_DESC bufferDesc{};
 		bufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -148,7 +204,7 @@ namespace TUK::Framework
         return std::make_unique<BufferInternal>(buffer);
 	}
 
-	std::unique_ptr<Texture> RenderDeviceInternal::CreateTexture() const
+	std::unique_ptr<Texture> GraphicsDeviceInternal::CreateTexture() const
 	{
 		D3D11_TEXTURE2D_DESC textureDesc{};
         // TODO: 이거 어떻게 할지 생각해봐.
@@ -162,7 +218,7 @@ namespace TUK::Framework
         return std::make_unique<TextureInternal>(texture2D);
 	}
 
-	std::unique_ptr<RenderTarget> RenderDeviceInternal::CreateTarget() const
+	std::unique_ptr<RenderTarget> GraphicsDeviceInternal::CreateTarget() const
 	{
         assert(d3dDevice);
 

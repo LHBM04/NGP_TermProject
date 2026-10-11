@@ -1,7 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include <cassert>
 #include <concepts>
+#include <utility>
 
 #include <d3d11_4.h>
 
@@ -15,6 +16,10 @@ namespace TUK::Framework
 	{
 	public:
 		ShaderInternal() noexcept = default;
+		explicit ShaderInternal(Microsoft::WRL::ComPtr<ID3D11DeviceChild> shader) noexcept
+			: shader(std::move(shader))
+		{
+		}
 		~ShaderInternal() noexcept override = default;
 
 		/** 소유권을 넘기지 않는 네이티브 셰이더 접근. */

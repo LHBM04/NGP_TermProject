@@ -15,6 +15,9 @@
     <ClCompile Include="Sources\MyGame.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Scenes\Scene_Stage1.cpp">
+      <Filter>Sources\Scenes</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\Precompiled.cpp">
       <Filter>Sources</Filter>
     </ClCompile>

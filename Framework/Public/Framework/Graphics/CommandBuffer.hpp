@@ -15,6 +15,11 @@ namespace TUK::Framework
 	class Texture;
 	class Shader;
 
+	enum class PrimitiveTopology : unsigned char
+	{
+		PointList, LineList, LineStrip, TriangleList, TriangleStrip
+	};
+
 	enum class IndexFormat : unsigned char
 	{
 		Undefined,
@@ -43,6 +48,7 @@ namespace TUK::Framework
 		
 		virtual void SetVertexShader(const Shader& vertexShader) = 0;
 		virtual void SetPixelShader(const Shader& pixelShader) = 0;
+		virtual void SetPrimitiveTopology(PrimitiveTopology topology) = 0;
 
 		virtual void SetVertexBuffer(
 			Buffer& buffer, 

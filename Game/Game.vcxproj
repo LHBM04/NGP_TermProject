@@ -170,6 +170,9 @@
   <ItemGroup>
     <ClCompile Include="Sources\MyEngine.cpp" />
     <ClCompile Include="Sources\MyGame.cpp" />
+    <ClCompile Include="Sources\Scenes\Scene_Stage1.cpp">
+      <AdditionalIncludeDirectories>$(ProjectDir)Sources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="Sources\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

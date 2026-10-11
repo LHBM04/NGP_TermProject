@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <d3d11_4.h>
 
@@ -13,7 +13,7 @@ namespace TUK::Framework
 	public:
 		explicit BufferInternal(Microsoft::WRL::ComPtr<ID3D11Buffer> d3dBuffer) noexcept;
 		~BufferInternal() noexcept override;
-		/** 소유권을 넘기지 않는 네이티브 객체 접근. */
+		/** ?뚯쑀沅뚯쓣 ?섍린吏 ?딅뒗 ?ㅼ씠?곕툕 媛앹껜 ?묎렐. */
 		[[nodiscard]] explicit operator ID3D11Buffer*() const noexcept
 		{
 			return GetD3D11Buffer();

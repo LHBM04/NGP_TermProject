@@ -165,7 +165,7 @@
   <ItemGroup>
     <ClInclude Include="Private\Graphics\BufferInternal.hpp" />
     <ClInclude Include="Private\Graphics\CommandBufferInternal.hpp" />
-    <ClInclude Include="Private\Graphics\RenderDeviceInternal.hpp" />
+    <ClInclude Include="Private\Graphics\GraphicsDeviceInternal.hpp" />
     <ClInclude Include="Private\Graphics\RenderTargetInternal.hpp" />
     <ClInclude Include="Private\Graphics\ShaderInternal.hpp" />
     <ClInclude Include="Private\Graphics\SwapChainInternal.hpp" />
@@ -180,6 +180,7 @@
     <ClInclude Include="Public\Framework\Core\Subsystem.hpp" />
     <ClInclude Include="Public\Framework\Core\System.hpp" />
     <ClInclude Include="Public\Framework\Entities.hpp" />
+    <ClInclude Include="Public\Framework\Entities\Entity.hpp" />
     <ClInclude Include="Public\Framework\Entities\Scene.hpp" />
     <ClInclude Include="Public\Framework\Entities\SceneSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Graphics.hpp" />
@@ -187,7 +188,7 @@
     <ClInclude Include="Public\Framework\Graphics\CommandBuffer.hpp" />
     <ClInclude Include="Public\Framework\Graphics\DepthStencil.hpp" />
     <ClInclude Include="Public\Framework\Graphics\ScissorRect.hpp" />
-    <ClInclude Include="Public\Framework\Graphics\RenderDevice.hpp" />
+    <ClInclude Include="Public\Framework\Graphics\GraphicsDevice.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderSubsystem.hpp" />
     <ClInclude Include="Public\Framework\Graphics\RenderTarget.hpp" />
     <ClInclude Include="Public\Framework\Graphics\ResourceState.hpp" />
@@ -225,7 +226,7 @@
     <ClCompile Include="Private\Entities\SceneSubsystem.cpp" />
     <ClCompile Include="Private\Graphics\BufferInternal.cpp" />
     <ClCompile Include="Private\Graphics\CommandBufferInternal.cpp" />
-    <ClCompile Include="Private\Graphics\RenderDeviceInternal.cpp" />
+    <ClCompile Include="Private\Graphics\GraphicsDeviceInternal.cpp" />
     <ClCompile Include="Private\Graphics\RenderSubsystem.cpp" />
     <ClCompile Include="Private\Graphics\RenderTargetInternal.cpp" />
     <ClCompile Include="Private\Graphics\SwapChainInternal.cpp" />

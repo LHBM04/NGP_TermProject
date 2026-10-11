@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Framework/Graphics/RenderDevice.hpp"
+#include "Framework/Graphics/GraphicsDevice.hpp"
 
 namespace TUK::Framework
 {
@@ -10,7 +10,7 @@ namespace TUK::Framework
 	class RenderTarget;
 	class SwapChain;
 
-	class RenderDeviceInternal : public RenderDevice
+	class RenderDeviceInternal : public GraphicsDevice
 	{
 	public:
 		RenderDeviceInternal(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice) noexcept;
@@ -39,6 +39,8 @@ namespace TUK::Framework
 		std::unique_ptr<Buffer> CreateBuffer(size_t size) const override;
 		std::unique_ptr<Texture> CreateTexture() const override;
 		std::unique_ptr<RenderTarget> CreateTarget() const override;
+		std::unique_ptr<Shader> CreateVertexShader(std::string_view source, std::string_view entryPoint) const override;
+		std::unique_ptr<Shader> CreatePixelShader(std::string_view source, std::string_view entryPoint) const override;
 
 	private:
 		Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice;

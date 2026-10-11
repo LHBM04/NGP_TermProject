@@ -50,6 +50,9 @@ namespace TUK::Framework
 
 	protected:
 		Engine() noexcept;
+
+	private:
+		static Engine* instance;
 	};
 
 	template <std::derived_from<EngineSubsystem> TSubsystem>

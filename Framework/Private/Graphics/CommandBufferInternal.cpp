@@ -43,6 +43,8 @@ namespace TUK::Framework
 	void CommandBufferInternal::Begin()
 	{
 		assert(d3dDeviceContext);
+		d3dCommandList.Reset();
+		d3dDeviceContext->ClearState();
 	}
 	
 	void CommandBufferInternal::End()
@@ -108,6 +110,21 @@ namespace TUK::Framework
 		assert(d3dDeviceContext);
 		ShaderInternal& shaderInternal = static_cast<ShaderInternal&>(const_cast<Shader&>(pixelShader));
 		d3dDeviceContext->PSSetShader(shaderInternal.GetD3D11Shader<ID3D11PixelShader>(), nullptr, 0);
+	}
+
+	void CommandBufferInternal::SetPrimitiveTopology(PrimitiveTopology topology)
+	{
+		D3D11_PRIMITIVE_TOPOLOGY nativeTopology;
+		switch (topology)
+		{
+		case PrimitiveTopology::PointList: nativeTopology = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST; break;
+		case PrimitiveTopology::LineList: nativeTopology = D3D11_PRIMITIVE_TOPOLOGY_LINELIST; break;
+		case PrimitiveTopology::LineStrip: nativeTopology = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP; break;
+		case PrimitiveTopology::TriangleList: nativeTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST; break;
+		case PrimitiveTopology::TriangleStrip: nativeTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP; break;
+		default: throw std::invalid_argument("Invalid primitive topology.");
+		}
+		d3dDeviceContext->IASetPrimitiveTopology(nativeTopology);
 	}
 
 	void CommandBufferInternal::SetVertexBuffer(

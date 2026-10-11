@@ -1,6 +1,7 @@
 ﻿#include "Precompiled.hpp"
 #include "MyGame.hpp"
 #include "MyEngine.hpp"
+#include "Scenes/Scene_Stage1.hpp"
 
 DEFINE_GAME_INSTANCE(::TUK::Game::MyGame)
 
@@ -17,6 +18,11 @@ namespace TUK::Game
 	void MyGame::Ready()
 	{
 		RequireWindow();
+		if (GetQuitCode() != EXIT_SUCCESS)
+		{
+			return;
+		}
+		RequireScenes();
 	}
 
 	void MyGame::RequireWindow()
@@ -32,8 +38,13 @@ namespace TUK::Game
 		WindowSubsystem* windowSubsystem = MyEngine::GetInstance()->GetSubsystem<WindowSubsystem>();
 		assert(windowSubsystem);
 
-		window = windowSubsystem->Create(options).value_or(nullptr);
-		assert(window);
+		auto created = windowSubsystem->Create(options);
+		if (!created)
+		{
+			ReportError(created.error());
+			return;
+		}
+		window = created.value();
 
 		RenderSubsystem* renderSubsystem = MyEngine::GetInstance()->GetSubsystem<RenderSubsystem>();
 		assert(renderSubsystem);
@@ -46,6 +57,6 @@ namespace TUK::Game
 		SceneSubsystem* sceneSubsystem = AddSubsystem<SceneSubsystem>();
 		assert(sceneSubsystem);
 
-		sceneSubsystem->AddScene<Scene_Stage1>(0, L"Stage1");
+		sceneSubsystem->AddScene<Scene_Stage1>(0, L"Stage1", *window);
 	}
 }
