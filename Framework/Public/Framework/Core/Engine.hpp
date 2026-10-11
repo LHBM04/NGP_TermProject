@@ -26,7 +26,7 @@ namespace TUK::Framework
 	class Engine : public System
 	{
 	public:
-		~Engine() noexcept override;
+		~Engine() noexcept override = default;
 		
 		template <std::derived_from<EngineSubsystem> TSubsystem>
 		TSubsystem* AddSubsystem();
@@ -49,10 +49,7 @@ namespace TUK::Framework
 		void PostTick() override;
 
 	protected:
-		Engine() noexcept;
-
-	private:
-		static Engine* instance;
+		Engine() noexcept = default;
 	};
 
 	template <std::derived_from<EngineSubsystem> TSubsystem>

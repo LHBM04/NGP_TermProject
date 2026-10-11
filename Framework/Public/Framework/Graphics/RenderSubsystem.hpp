@@ -42,7 +42,7 @@ namespace TUK::Framework
 
 	private:
 		/** 디바이스 */
-		std::unique_ptr<GraphicsDevice> device;
+		std::unique_ptr<GraphicsDevice> graphicsDevice;
 
 		/** 명령 리스트 */
 		std::unique_ptr<CommandBuffer> commandBuffer;

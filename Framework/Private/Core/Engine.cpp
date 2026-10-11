@@ -5,28 +5,6 @@
 
 namespace TUK::Framework
 {
-	Engine* Engine::instance = nullptr;
-
-	Engine::Engine() noexcept
-	{
-		assert(!instance);
-		instance = this;
-	}
-
-	Engine::~Engine() noexcept
-	{
-		if (instance == this)
-		{
-			instance = nullptr;
-		}
-	}
-
-	Engine* Engine::GetInstance()
-	{
-		assert(instance);
-		return instance;
-	}
-
 	void Engine::PreTick()
 	{
 		for (EngineSubsystem& subsystem : GetSubsystems())
@@ -49,5 +27,10 @@ namespace TUK::Framework
 		{
 			subsystem.PostTick();
 		}
+	}
+
+	Engine* Engine::GetInstance()
+	{
+		return static_cast<Engine*>(System::GetInstance());
 	}
 }

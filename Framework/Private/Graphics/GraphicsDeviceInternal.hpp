@@ -10,11 +10,11 @@ namespace TUK::Framework
 	class RenderTarget;
 	class SwapChain;
 
-	class RenderDeviceInternal : public GraphicsDevice
+	class GraphicsDeviceInternal : public GraphicsDevice
 	{
 	public:
-		RenderDeviceInternal(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice) noexcept;
-		~RenderDeviceInternal() noexcept override;
+		GraphicsDeviceInternal(Microsoft::WRL::ComPtr<ID3D11Device> d3dDevice) noexcept;
+		~GraphicsDeviceInternal() noexcept override;
 		/** 소유권을 넘기지 않는 네이티브 객체 접근. */
 		[[nodiscard]] explicit operator ID3D11Device*() const noexcept
 		{
